@@ -1,0 +1,17 @@
+---
+- name: Tag the VM
+  hosts: web-nodes
+  gather_facts: no
+  tasks:
+    - name: Add tags to instance
+      gce_tag:
+        instance_name: test-webserver
+        tags: test-webserver
+        zone: us-central1-a
+        state: present
+
+- name: Deploy nginx and passenger
+  hosts: web-nodes
+  gather_facts: true
+  roles:
+    - nginx-passenger
