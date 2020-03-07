@@ -17,8 +17,13 @@ resource "google_compute_instance" "default" {
     }
   }
 
-    // Apply the firewall rule to allow external IPs to access this instance
-    tags = ["http-server"]
+  // Apply the firewall rule to allow external IPs to access this instance
+  tags = ["http-server"]
+  
+  labels {
+        web = "web"
+     }
+
 }
 
 resource "google_compute_firewall" "http-server" {
@@ -37,7 +42,7 @@ resource "google_compute_firewall" "http-server" {
 
 resource "null_resource" "deploy" {
   provisioner "local-exec" {
-    command = "ansible-playbook -i ../ansible/inv.gcp.yml ../ansible/test.yml"
+    command = "ansible-playbook -i ../ansible/inv.gcp.yml ../ansible/deploy.yml"
   }
 }
 

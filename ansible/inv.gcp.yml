@@ -1,0 +1,10 @@
+plugin: gcp_compute
+projects:
+  - golden-shine-270312
+filters:
+groups:
+  web-nodes: "'web' in (labels.web)"
+scopes:
+  - https://www.googleapis.com/auth/compute
+service_account_file: golden.json
+auth_kind: serviceaccount

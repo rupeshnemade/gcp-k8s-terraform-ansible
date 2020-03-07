@@ -5,7 +5,7 @@ variable "location" {
 }
 
 resource "google_container_cluster" "k8s-cluster" {
-  name                     = "devops-challenge"
+  name                     = "golden-shine-270312"
   remove_default_node_pool = true
 
   location = "${var.location}"
